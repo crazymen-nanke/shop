@@ -1,20 +1,24 @@
-import {createRouter, createWebHashHistory, createWebHistory} from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import {createRouter, createWebHistory} from "vue-router";
 
 const routes = [
   {
-    path: "/", //路由地址
-    name: "home", //路由名称
-    component: HomeView, //路由组件
-  },
-  {
-    path: "/about",
-    name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+    path: "/",
+    name: "layout",
+    component: () => import("../views/layout/LayoutView.vue"),
+    // 重定向指定路由地址
+    redirect: "/index",
+    children: [
+      {
+        path: "/index",
+        name: "rolesList",
+        component: () => import("../views/pages/RolesListView.vue"),
+      },
+      {
+        path: "/users",
+        name: "usersList",
+        component: () => import("../views/pages/UsersListView.vue"),
+      },
+    ],
   },
 ];
 
