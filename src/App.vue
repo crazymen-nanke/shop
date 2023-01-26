@@ -4,6 +4,11 @@
 </template>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,5 +28,17 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+
+/* flex布局样式 */
+.flex-float {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
 }
 </style>

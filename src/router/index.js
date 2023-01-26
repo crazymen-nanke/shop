@@ -6,10 +6,10 @@ const routes = [
     name: "layout",
     component: () => import("../views/layout/LayoutView.vue"),
     // 重定向指定路由地址
-    redirect: "/index",
+    redirect: "/roles",
     children: [
       {
-        path: "/index",
+        path: "/roles",
         name: "rolesList",
         component: () => import("../views/pages/RolesListView.vue"),
       },
