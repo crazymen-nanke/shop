@@ -65,7 +65,7 @@ export default {
 }
 
 .common-header {
-    background: rgb(13, 17, 22);
+    background: rgb(35, 41, 48);
     display: flex;
 }
 
