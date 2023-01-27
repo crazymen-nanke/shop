@@ -12,6 +12,7 @@
                 <el-form-item>
                     <el-button type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
                 </el-form-item>
+                <p>{{ num }}</p>
             </el-form>
         </div>
     </div>
@@ -19,12 +20,15 @@
 
 <script>
 import { reactive, toRefs } from "vue"
-
+import { useStore } from "vuex"
 
 export default {
     name: "login",
     setup() {
+        const store = useStore()
+        const storeNum = store.state.count;
         const data = reactive({
+            num: storeNum,
             ruleForm: [
                 {
                     account: "",
@@ -33,7 +37,13 @@ export default {
             ],
         })
         const submitForm = function (ruleFormRef) {
-            console.log("login");
+
+            //通过commit方法更改count值，第一个参数是mutations里面具体的方法名称，第二个参数是count的修改值
+            //store.commit("setCount", 100);
+            //通过dispatch方法更改count值，第一个参数是actions里面具体的方法名称，第二个参数是count的修改值
+            store.dispatch("setCountPromise", 100)
+                .then(resp => { console.log(store.state.count); })
+                .catch(err => { console.log(err) });
         }
         return {
             ...toRefs(data),
