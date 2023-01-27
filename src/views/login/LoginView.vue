@@ -26,9 +26,9 @@ export default {
     name: "login",
     setup() {
         const store = useStore()
-        const storeNum = store.state.count;
+        const getStore = store.getters["number/getCount"]
         const data = reactive({
-            num: storeNum,
+            num: getStore,
             ruleForm: [
                 {
                     account: "",
@@ -41,9 +41,11 @@ export default {
             //通过commit方法更改count值，第一个参数是mutations里面具体的方法名称，第二个参数是count的修改值
             //store.commit("setCount", 100);
             //通过dispatch方法更改count值，第一个参数是actions里面具体的方法名称，第二个参数是count的修改值
-            store.dispatch("setCountPromise", 100)
-                .then(resp => { console.log(store.state.count); })
-                .catch(err => { console.log(err) });
+            // store.dispatch("setCountPromise", 100)
+            //     .then(resp => { console.log(store.state.count); })
+            //     .catch(err => { console.log(err) });
+            store.commit("number/setCount", 100);
+            console.log(store.getters["number/getCount"]);
         }
         return {
             ...toRefs(data),
