@@ -6,7 +6,7 @@ const routes = [
     name: "layout",
     component: () => import("../views/layout/LayoutView.vue"),
     // 重定向指定路由地址
-    redirect: "/roles",
+    redirect: "/users",
     children: [
       {
         path: "/roles",
