@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from "vue-router";
+import store from "../store/index.js";
 
 const routes = [
   {
@@ -27,9 +28,29 @@ const routes = [
   },
 ];
 
+// 创建路由对象
 const router = createRouter({
   history: createWebHistory(),
   routes,
 });
 
+// 创建路由守卫
+router.beforeEach((to, from, next) => {
+  // to: 即将进入的目标路由对象
+  // from：当前导航正要离开的路由
+  // next：调用该方法来 resolve这个钩子
+
+  const uInfo = store.state.uInfo.userInfo;
+  if (!uInfo.uName) {
+    if (to.path === "/login") {
+      next();
+      return;
+    }
+    next("/login");
+  } else {
+    next();
+  }
+});
+
+// 暴露路由对象
 export default router;
