@@ -37,8 +37,9 @@ export default {
 
         const submitForm = function () {
             store.commit("setUserInfo", data.ruleForm)
+            localStorage.setItem("loginData", JSON.stringify(data.ruleForm))
             console.log(store.state.uInfo.userInfo)
-            router.push({ "path": "/users" })
+            router.push({ "path": "/" })
         }
         return {
             ...toRefs(data),
