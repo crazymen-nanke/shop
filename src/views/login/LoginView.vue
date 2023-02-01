@@ -27,18 +27,16 @@ export default {
         const store = useStore()
         const router = useRouter()
         const data = reactive({
-            ruleForm: [
-                {
-                    account: "",
-                    pass: "",
-                }
-            ],
+            ruleForm:
+            {
+                account: "",
+                pass: "",
+            },
         })
 
-        const submitForm = function () {
+        const submitForm = () => {
             store.commit("setUserInfo", data.ruleForm)
             localStorage.setItem("loginData", JSON.stringify(data.ruleForm))
-            console.log(store.state.uInfo.userInfo)
             router.push({ "path": "/" })
         }
         return {
