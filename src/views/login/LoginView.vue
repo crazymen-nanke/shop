@@ -36,7 +36,10 @@ export default {
 
         const submitForm = () => {
             store.commit("setUserInfo", data.ruleForm)
+
+            // 如果登录成功则将用户登录信息进行存储
             localStorage.setItem("loginData", JSON.stringify(data.ruleForm))
+
             router.push({ "path": "/" })
         }
         return {

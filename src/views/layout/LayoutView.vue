@@ -6,7 +6,7 @@
                     <img class="logo" src="../../assets/logo.png" alt="#">
                     <h1 class="title">商品后台管理系统</h1>
                 </div>
-                <el-button type="danger">退出</el-button>
+                <el-button type="danger" @click="loginOut()">退出</el-button>
             </el-header>
             <el-container>
                 <el-aside class="common-aside" width="200px">
@@ -50,11 +50,52 @@
 
 <script>
 import { Avatar } from '@element-plus/icons-vue';
-
+import { reactive, toRefs } from 'vue';
+import { ElMessage, ElMessageBox } from 'element-plus';
+import { useRouter } from 'vue-router';
 
 export default {
     name: "layout",
-    components: { Avatar }
+    components: { Avatar },
+    setup() {
+        const data = reactive({
+
+        })
+        const router = useRouter()
+        const loginOut = () => {
+            ElMessageBox.confirm(
+                '您将要退出系统?',
+                '警告',
+                {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning',
+                }
+            )
+                .then(() => {
+                    ElMessage({
+                        type: 'success',
+                        message: '返回登录页面',
+                    })
+                    localStorage.removeItem("loginData")
+                    localStorage.clear()
+                    router.push({
+                        path: "/login"
+                    })
+                })
+                .catch(() => {
+                    ElMessage({
+                        type: 'info',
+                        message: '已取消',
+                    })
+                })
+        }
+        return {
+            ...toRefs(data),
+            loginOut
+        }
+
+    }
 }
 </script>
 
