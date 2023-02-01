@@ -10,9 +10,8 @@
                     <el-input v-model="ruleForm.pass" type="password" />
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="submitForm(ruleFormRef)">登录</el-button>
+                    <el-button type="primary" @click="submitForm()">登录</el-button>
                 </el-form-item>
-                <p>{{ num }}</p>
             </el-form>
         </div>
     </div>
@@ -21,14 +20,13 @@
 <script>
 import { reactive, toRefs } from "vue"
 import { useStore } from "vuex"
-
+import { useRouter } from "vue-router"
 export default {
     name: "login",
     setup() {
         const store = useStore()
-        const getStore = store.getters["number/getCount"]
+        const router = useRouter()
         const data = reactive({
-            num: getStore,
             ruleForm: [
                 {
                     account: "",
@@ -36,16 +34,11 @@ export default {
                 }
             ],
         })
-        const submitForm = function (ruleFormRef) {
 
-            //通过commit方法更改count值，第一个参数是mutations里面具体的方法名称，第二个参数是count的修改值
-            //store.commit("setCount", 100);
-            //通过dispatch方法更改count值，第一个参数是actions里面具体的方法名称，第二个参数是count的修改值
-            // store.dispatch("setCountPromise", 100)
-            //     .then(resp => { console.log(store.state.count); })
-            //     .catch(err => { console.log(err) });
-            store.commit("number/setCount", 100);
-            console.log(store.getters["number/getCount"]);
+        const submitForm = function () {
+            store.commit("setUserInfo", data.ruleForm)
+            console.log(store.state.uInfo.userInfo)
+            router.push({ "path": "/users" })
         }
         return {
             ...toRefs(data),

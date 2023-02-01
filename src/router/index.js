@@ -34,14 +34,14 @@ const router = createRouter({
   routes,
 });
 
-// 创建路由守卫
+// 创建全局前置路由守卫
 router.beforeEach((to, from, next) => {
   // to: 即将进入的目标路由对象
   // from：当前导航正要离开的路由
   // next：调用该方法来 resolve这个钩子
 
   const uInfo = store.state.uInfo.userInfo;
-  if (!uInfo.uName) {
+  if (!uInfo.account) {
     if (to.path === "/login") {
       next();
       return;
