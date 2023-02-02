@@ -4,7 +4,7 @@
             <el-header class="common-header flex-float">
                 <div class="flex">
                     <img class="logo" src="../../assets/logo.png" alt="#">
-                    <h3 class="title">商品后台管理系统</h3>
+                    <h4 class="title">商品后台管理系统</h4>
                 </div>
                 <el-button type="danger" @click="loginOut()">退出</el-button>
             </el-header>
@@ -106,7 +106,7 @@ export default {
 }
 
 .common-header {
-    background: rgb(35, 41, 48);
+    background: #212121;
     display: flex;
 }
 
@@ -121,6 +121,6 @@ export default {
 }
 
 .common-aside {
-    background: rgb(48, 55, 65);
+    background: #424242;
 }
 </style>
