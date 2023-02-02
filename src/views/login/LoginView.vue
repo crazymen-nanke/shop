@@ -21,6 +21,7 @@
 import { reactive, toRefs } from "vue"
 import { useStore } from "vuex"
 import { useRouter } from "vue-router"
+
 export default {
     name: "login",
     setup() {
@@ -35,12 +36,25 @@ export default {
         })
 
         const submitForm = () => {
+            // 使用axios登录系统
+            // loginApi(data.ruleForm).then(res => {
+            //     if (res.data) {
+            //         store.commit('setUserInfo', res.data);
+            //         localStorage.setItem("loginData", JSON.stringify(res.data))
+            //         // 跳转/user
+            //         router.push({
+            //             path: "/"
+            //         })
+            //     }
+            // })
+
             store.commit("setUserInfo", data.ruleForm)
 
             // 如果登录成功则将用户登录信息进行存储
             localStorage.setItem("loginData", JSON.stringify(data.ruleForm))
 
             router.push({ "path": "/" })
+
         }
         return {
             ...toRefs(data),

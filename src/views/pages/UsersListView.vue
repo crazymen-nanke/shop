@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-breadcrumb :separator-icon="ArrowRight">
+        <el-breadcrumb separator-icon="ArrowRight">
             <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>用户列表</el-breadcrumb-item>
         </el-breadcrumb>
@@ -16,13 +16,30 @@
                         </template>
                     </el-input>
                 </div>
-                <el-button type="primary" @click="addUser">新建用户</el-button>
+                <el-button type="primary">新建用户</el-button>
             </div>
         </div>
     </div>
 </template>
 <script>
+import { toRefs, reactive } from 'vue';
 export default {
     name: "usersList",
+    setup() {
+        const data = reactive({
+
+        })
+
+        return {
+            ...toRefs(data),
+
+        }
+    }
 }
 </script>
+<style>
+.input_box {
+    width: 200px;
+    margin-right: 15px;
+}
+</style>

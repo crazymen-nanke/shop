@@ -4,7 +4,7 @@
             <el-header class="common-header flex-float">
                 <div class="flex">
                     <img class="logo" src="../../assets/logo.png" alt="#">
-                    <h1 class="title">商品后台管理系统</h1>
+                    <h3 class="title">商品后台管理系统</h3>
                 </div>
                 <el-button type="danger" @click="loginOut()">退出</el-button>
             </el-header>
