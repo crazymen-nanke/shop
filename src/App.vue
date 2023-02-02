@@ -20,4 +20,17 @@
   display: flex;
   align-items: center;
 }
+
+.el-main {
+  background: #efefef;
+}
+
+.page_content {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background: #fff;
+  margin-top: 30px;
+}
 </style>
